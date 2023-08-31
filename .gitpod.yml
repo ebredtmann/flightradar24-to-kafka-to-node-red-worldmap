@@ -1,0 +1,22 @@
+# List the start up tasks.
+# Learn more: https://www.gitpod.io/docs/configure/workspaces/tasks
+tasks:
+  - name: Script Task
+    init: echo 'init script' # runs during prebuild => https://www.gitpod.io/docs/configure/projects/prebuilds
+    command: echo 'start script'
+
+  - name: Docker Swarm Init
+    command: docker swarm init
+  
+  - name: Docker Startup Services
+    command: docker stack deploy -c docker-compose.yml flightdemo
+
+# List the ports to expose. 
+# Learn more: https://www.gitpod.io/docs/configure/workspaces/ports
+ports:
+  - name: Node Red Frontend
+    description: Port 1880 for the frontend
+    port: 1880
+    onOpen: open-preview
+
+# Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
